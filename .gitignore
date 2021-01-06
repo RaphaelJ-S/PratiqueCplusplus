@@ -1,4 +1,5 @@
-main
+.vscode
+main.exe
 Ensemble.o
 Matrice.o
 jeux.o

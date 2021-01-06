@@ -14,7 +14,7 @@ class Ensemble {
 		}
 		
 		~Ensemble() {
-			delete ensemble;
+			delete &ensemble;
 		}
 		
 		int getIndex(T membre) {

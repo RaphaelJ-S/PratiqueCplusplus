@@ -18,8 +18,7 @@ class Matrice{
 		size_t getNbrColonne();		
 		T* getMatrice();
 		void setCell(T, size_t, size_t);
-		void showEq();
-		void showSh();
+		void show();
 };
 
 #endif

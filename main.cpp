@@ -7,7 +7,7 @@ using namespace std;
 int main(int argc, char** argv) {
 	
 	int choice;
-	srand(time(NULL));
+	
 	do{
 		cout << "\n\nMenu Des Jeux";
 		cout << "\n\n0. Arrêter\n1. Devine le nombre!\n2. Sudoku!";

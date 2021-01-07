@@ -1,6 +1,5 @@
 compOpt=g++ -Wall -Werror -std=c++17
 
-
 main: jeux.o Matrice.o Ensemble.o
 	$(compOpt) -o main.exe jeux.o Ensemble.o Matrice.o main.cpp 
 

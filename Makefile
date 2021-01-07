@@ -12,8 +12,9 @@ Ensemble.o: Ensemble.cpp
 jeux.o: jeux.cpp jeux.h
 	$(compOpt) -c jeux.cpp 
 
-clean:
-	rm -fo ./main.exe 
+blank:
+	rm -fo ./main.exe
+	rm ./*.o 
 
 .PHONY: clean
 

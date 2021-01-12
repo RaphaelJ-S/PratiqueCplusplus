@@ -43,12 +43,14 @@ static bool sectionEstComplete(size_t section, Matrice<int> grille) {
 
 static bool sudokuEstComplet(Matrice<int> grille) {
 	size_t i = 0;	
-	while(sectionEstComplete(i, grille) && colonneEstComplete(i, grille) && ligneEstComplete(i, grille)) {
-		++i;
-		if(i == 9) return true;
+	bool complet = true;	
+	while(i < 9 && complet) {
+		complet = (sectionEstComplete(i, grille) && colonneEstComplete(i, grille) && ligneEstComplete(i, grille));
+		i++;	
 	}
-	return false;
+	return complet;
 }
+
 static void inserer(Matrice<int> &grille) {
 	int nombre;
 	size_t ligne;
@@ -92,13 +94,21 @@ void sudoku() {
 
 	Matrice<int> grille(9,9);
 	Ensemble<int> set;
+	char reponse;
+	bool complet = false;
 	cout << "\n\nJeu de sudoku\n";
 	
 	do {
 		grille.show();
-		inserer(grille);	
-	}while(!sudokuEstComplet(grille));
-	cout << "\nFélicitation"<< endl;
+		inserer(grille);
+		cout << endl << "Voulez vous vérifier votre sudoku? (O/N)";
+		cin >> reponse;
+		if(reponse == 'O') { 
+			complet = sudokuEstComplet(grille);
+			if(complet) cout << "\nFélicitation" << endl;
+			else cout << "\nPas tout à fait\n";
+		}
+	}while(!complet);
 }
 
 

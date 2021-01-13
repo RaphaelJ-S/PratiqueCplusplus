@@ -2,6 +2,13 @@
 #include <iostream>
 
 template<typename T>
+Matrice<T>::Matrice() {
+	this->matrice = new T[0];
+	nbrLigne = 0;
+	nbrColonne = 0;
+}
+
+template<typename T>
 Matrice<T>::Matrice(const size_t ligne, const size_t colonne) 
 {
 	if( ligne > 0 && colonne > 0) 
@@ -63,9 +70,36 @@ void Matrice<T>::show()
 	}
 }
 
+template<typename T>
+Matrice<T> Matrice<T>::operator+(const Matrice& arg) const{
+
+	if(this->nbrColonne == arg.nbrColonne && this->nbrLigne == arg.nbrLigne) {
+		
+		Matrice<T> matrice(arg.nbrLigne, arg.nbrColonne);
+
+		for	(size_t i = 0; i < this->nbrColonne*this->nbrLigne ; ++i) {
+			matrice.matrice[i] = this->matrice[i] + arg.matrice[i];
+		}
+		return matrice;
+
+	}else std::cout << "Les matrices doivent avoir le même nombre de lignes et de colonnes" << std::endl;
+	return arg;
+} 
+
+template<typename T>
+Matrice<T> Matrice<T>::operator-(const Matrice& arg) const {
+	if ( this->nbrColonne == arg.nbrColonne && this->nbrLigne == arg.nbrLigne ) {
+		Matrice<T> matrice( arg.nbrLigne, arg.nbrColonne );
+		for (size_t i = 0 ; i < this->nbrColonne*this->nbrLigne ; ++i) {
+			matrice.matrice[i] = this->matrice[i] - arg.matrice[i];
+		}
+		return matrice;	
+	}
+	return arg;
+}
+
 template class Matrice<short>;
 template class Matrice<int>;
-template class Matrice<size_t>;
 template class Matrice<long>;
 template class Matrice<float>;
 template class Matrice<double>;

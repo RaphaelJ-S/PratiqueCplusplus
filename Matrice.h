@@ -11,6 +11,7 @@ class Matrice{
 	size_t nbrColonne;	
 	
 	public:
+		Matrice();
 		Matrice(size_t , size_t); 
 		~Matrice();
 		T getCell(size_t, size_t);
@@ -19,6 +20,9 @@ class Matrice{
 		T* getMatrice();
 		void setCell(T, size_t, size_t);
 		void show();
+		Matrice operator+(const Matrice&) const;
+		Matrice operator-(const Matrice&) const;
+
 };
 
 #endif
